@@ -31,12 +31,12 @@ f = Variable()
 
 diet = input('What diet would you like to explore? (Keto = K, Atkins = A, Zone = Z, Paleo = P) ')
 if(diet == 'K'):
-	prot = (DCI*0.20)
-	carb = (DCI*0.05)
-	fat = (DCI*0.75)
-	constraints = [p > 0, c > 0, (4*p)+(4*c)+(9*f) <= DCI, 4*p <= prot, 4*c <= carb, 9*f >= fat]
+	prot = ((DCI-500)*0.20)
+	carb = ((DCI-500)*0.05)
+	fat = ((DCI-500)*0.75)
+	constraints = [4*p >= prot, 4*c >= carb, 9*f >= fat, (4*p)+(4*c)+(9*f) <= DCI]
 elif(diet == 'A'):
-	constraints = [p >= 120, c > 0, f >= 120, (4*p)+(4*c)+(9*f) <= DCI, p <= 140, c <= 20, f <= 140]
+	constraints = [p >= 340, c >= 18, f >= 120, (4*p)+(4*c)+(9*f) <= DCI, p <= 510, c <= 22, f <= 140]
 elif(diet == 'Z'):
 	prot = (DCI*0.3)
 	carb = (DCI*0.45)
@@ -51,13 +51,13 @@ else:
 #carb = 4
 #fat = 9
 
-objective = Maximize((4*p)+(4*c)+(9*f))
+objective = Minimize((4*p)+(4*c)+(9*f))
 #constraints = [p > 0, c > 0, f > 0, (4*p)+(4*c)+(9*f) <= DCI, 4*p <= prot_k, 4*c <= carb_k, 9*f >= fat_k]
 prob = Problem(objective, constraints)
 
 # The optimal objective is returned by prob.solve().
 result = prob.solve()
-print('{}: {} calories daily'.format('Maximized intake', result))
+print('{}: {} calories daily'.format('Minimized intake', result))
 print('{}: {} grams'.format('Protein', round(p.value,2)))
 print('{}: {} grams'.format('Carbs', round(c.value,2)))
 print('{}: {} grams'.format('Fat', round(f.value,2)))

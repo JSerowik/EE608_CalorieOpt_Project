@@ -1,0 +1,5 @@
+chicken = [4.50, 30, 20, 40]
+beef = [5.60, 40, 10, 30]
+
+Minimize(var_chicken*chicken + var_beef*beef)
+contraints = []
