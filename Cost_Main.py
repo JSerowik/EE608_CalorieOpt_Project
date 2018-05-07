@@ -51,10 +51,6 @@ Let = [0.005487065224,0.009,0.0297,0.0014,0.14] #Lettuce
 Brc = [0.005961304432,0.0282,0.0664,0.0037,0.34] #Broccoli
 Btr = [0.0154103247,0.0085,0,0.8111,7.17] #Butter
 
-var_chi = Variable()
-var_bef = Variable()
-var_pas = Variable()
-
 ScbV = Variable()
 GrbV = Variable()
 RfbV = Variable()
@@ -79,12 +75,13 @@ CesV = Variable()
 BcnV = Variable()
 BanV = Variable()
 LetV = Variable()
-BrcV, BtrV = Variable()
+BrcV = Variable() 
+BtrV = Variable()
 
 default = [0 <= ScbV, ScbV <= 453,
 0 <= GrbV,
 0 <= RfbV,
-0 <= TfuV,
+0 <= TfuV, 
 0 <= EggV,
 0 <= AplV,
 0 <= CrtV,
@@ -108,9 +105,9 @@ default = [0 <= ScbV, ScbV <= 453,
 0 <= BrcV,
 0 <= BtrV]
 
-bull = input("Yo? ")
+diet = input("Please select your diet (Paleo = P, Atkins = A, Keto = K, Zone = Z) ")
 
-if(bull == "P"):
+if(diet == "P"):
 	if(sex == "M"):
 		constraints = [0.7*(155-20) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
@@ -149,7 +146,7 @@ if(bull == "P"):
 		120 >= Scb[3]*ScbV + Grb[3]*GrbV + Rfb[3]*RfbV + Tfu[3]*TfuV + Egg[3]*EggV + Apl[3]*AplV + Crt[3]*CrtV + Ptc[3]*PtcV + Grp[3]*GrpV
 		+ Lfy[3]*LfyV + Pnt[3]*PntV + Ach[3]*AchV +Tcc[3]*TccV + Hcc[3]*HccV + Wwb[3]*WwbV + Whr[3]*WhrV + Whr[3]*WhrV + Brr[3]*BrrV + Oin[3]*OinV + Rpt[3]*RptV 
 		+ Whm[3]*WhmV + Ces[3]*CesV + Bcn[3]*BcnV + Ban[3]*BanV + Let[3]*LetV + Brc[3]*BrcV + Btr[3]*BtrV] + default
-elif(bull == "A"):
+elif(diet == "A"):
 	constraints = [340 <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 	+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 	+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
@@ -168,7 +165,7 @@ elif(bull == "A"):
 	140 >= Scb[3]*ScbV + Grb[3]*GrbV + Rfb[3]*RfbV + Tfu[3]*TfuV + Egg[3]*EggV + Apl[3]*AplV + Crt[3]*CrtV + Ptc[3]*PtcV + Grp[3]*GrpV
 	+ Lfy[3]*LfyV + Pnt[3]*PntV + Ach[3]*AchV +Tcc[3]*TccV + Hcc[3]*HccV + Wwb[3]*WwbV + Whr[3]*WhrV + Whr[3]*WhrV + Brr[3]*BrrV + Oin[3]*OinV + Rpt[3]*RptV 
 	+ Whm[3]*WhmV + Ces[3]*CesV + Bcn[3]*BcnV + Ban[3]*BanV + Let[3]*LetV + Brc[3]*BrcV + Btr[3]*BtrV] + default
-elif(bull == "K"):
+elif(diet == "K"):
 	if(sex == "M"):
 		constraints = [0.8*(155-20) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
@@ -207,7 +204,7 @@ elif(bull == "K"):
 		120 >= Scb[3]*ScbV + Grb[3]*GrbV + Rfb[3]*RfbV + Tfu[3]*TfuV + Egg[3]*EggV + Apl[3]*AplV + Crt[3]*CrtV + Ptc[3]*PtcV + Grp[3]*GrpV
 		+ Lfy[3]*LfyV + Pnt[3]*PntV + Ach[3]*AchV +Tcc[3]*TccV + Hcc[3]*HccV + Wwb[3]*WwbV + Whr[3]*WhrV + Whr[3]*WhrV + Brr[3]*BrrV + Oin[3]*OinV + Rpt[3]*RptV 
 		+ Whm[3]*WhmV + Ces[3]*CesV + Bcn[3]*BcnV + Ban[3]*BanV + Let[3]*LetV + Brc[3]*BrcV + Btr[3]*BtrV] + default
-elif(bull == "Z"):
+elif(diet == "Z"):
 	if(sex == "M"):
 		constraints = [105 <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
@@ -282,16 +279,16 @@ print('{}: {} grams'.format('Banana',round(BanV.value,2)))
 print('{}: {} grams'.format('Lettuce',round(LetV.value,2)))
 print('{}: {} grams'.format('Broccoli',round(BrcV.value,2)))
 print('{}: {} grams'.format('Butter',round(BtrV.value,2)))
-
-print(str(round(Scb[1]*ScbV.value + Grb[1]*GrbV.value + Rfb[1]*RfbV.value + Tfu[1]*TfuV.value + Egg[1]*EggV.value + Apl[1]*AplV.value + Crt[1]*CrtV.value + Ptc[1]*PtcV.value + Grp[1]*GrpV.value
+print('\n')
+print('Protein: '+str(round(Scb[1]*ScbV.value + Grb[1]*GrbV.value + Rfb[1]*RfbV.value + Tfu[1]*TfuV.value + Egg[1]*EggV.value + Apl[1]*AplV.value + Crt[1]*CrtV.value + Ptc[1]*PtcV.value + Grp[1]*GrpV.value
 	+ Lfy[1]*LfyV.value + Pnt[1]*PntV.value + Ach[1]*AchV.value +Tcc[1]*TccV.value + Hcc[1]*HccV.value + Wwb[1]*WwbV.value + Whr[1]*WhrV.value + Whr[1]*WhrV.value + Brr[1]*BrrV.value
-	+ Oin[1]*OinV.value + Rpt[1]*RptV.value + Whm[1]*WhmV.value + Ces[1]*CesV.value + Bcn[1]*BcnV.value + Ban[1]*BanV.value + Let[1]*LetV.value + Brc[1]*BrcV.value + Btr[1]*BtrV.value,2)))
-print(str(round(Scb[2]*ScbV.value + Grb[2]*GrbV.value + Rfb[2]*RfbV.value + Tfu[2]*TfuV.value + Egg[2]*EggV.value + Apl[2]*AplV.value + Crt[2]*CrtV.value + Ptc[2]*PtcV.value + Grp[2]*GrpV.value
+	+ Oin[1]*OinV.value + Rpt[1]*RptV.value + Whm[1]*WhmV.value + Ces[1]*CesV.value + Bcn[1]*BcnV.value + Ban[1]*BanV.value + Let[1]*LetV.value + Brc[1]*BrcV.value + Btr[1]*BtrV.value,2))+' grams')
+print('Carbs: '+str(round(Scb[2]*ScbV.value + Grb[2]*GrbV.value + Rfb[2]*RfbV.value + Tfu[2]*TfuV.value + Egg[2]*EggV.value + Apl[2]*AplV.value + Crt[2]*CrtV.value + Ptc[2]*PtcV.value + Grp[2]*GrpV.value
 	+ Lfy[2]*LfyV.value + Pnt[2]*PntV.value + Ach[2]*AchV.value +Tcc[2]*TccV.value + Hcc[2]*HccV.value + Wwb[2]*WwbV.value + Whr[2]*WhrV.value + Whr[2]*WhrV.value + Brr[2]*BrrV.value
-	+ Oin[2]*OinV.value + Rpt[2]*RptV.value + Whm[2]*WhmV.value + Ces[2]*CesV.value + Bcn[2]*BcnV.value + Ban[2]*BanV.value + Let[2]*LetV.value + Brc[2]*BrcV.value + Btr[2]*BtrV.value,2)))
-print(str(round(Scb[3]*ScbV.value + Grb[3]*GrbV.value + Rfb[3]*RfbV.value + Tfu[3]*TfuV.value + Egg[3]*EggV.value + Apl[3]*AplV.value + Crt[3]*CrtV.value + Ptc[3]*PtcV.value + Grp[3]*GrpV.value
+	+ Oin[2]*OinV.value + Rpt[2]*RptV.value + Whm[2]*WhmV.value + Ces[2]*CesV.value + Bcn[2]*BcnV.value + Ban[2]*BanV.value + Let[2]*LetV.value + Brc[2]*BrcV.value + Btr[2]*BtrV.value,2))+' grams')
+print('Fat: '+str(round(Scb[3]*ScbV.value + Grb[3]*GrbV.value + Rfb[3]*RfbV.value + Tfu[3]*TfuV.value + Egg[3]*EggV.value + Apl[3]*AplV.value + Crt[3]*CrtV.value + Ptc[3]*PtcV.value + Grp[3]*GrpV.value
 	+ Lfy[3]*LfyV.value + Pnt[3]*PntV.value + Ach[3]*AchV.value +Tcc[3]*TccV.value + Hcc[3]*HccV.value + Wwb[3]*WwbV.value + Whr[3]*WhrV.value + Whr[3]*WhrV.value + Brr[3]*BrrV.value
-	+ Oin[3]*OinV.value + Rpt[3]*RptV.value + Whm[3]*WhmV.value + Ces[3]*CesV.value + Bcn[3]*BcnV.value + Ban[3]*BanV.value + Let[3]*LetV.value + Brc[3]*BrcV.value + Btr[3]*BtrV.value,2)))
-print(str(round(Scb[4]*ScbV.value + Grb[4]*GrbV.value + Rfb[4]*RfbV.value + Tfu[4]*TfuV.value + Egg[4]*EggV.value + Apl[4]*AplV.value + Crt[4]*CrtV.value + Ptc[4]*PtcV.value + Grp[4]*GrpV.value
+	+ Oin[3]*OinV.value + Rpt[3]*RptV.value + Whm[3]*WhmV.value + Ces[3]*CesV.value + Bcn[3]*BcnV.value + Ban[3]*BanV.value + Let[3]*LetV.value + Brc[3]*BrcV.value + Btr[3]*BtrV.value,2))+' grams')
+print('Calories: '+str(round(Scb[4]*ScbV.value + Grb[4]*GrbV.value + Rfb[4]*RfbV.value + Tfu[4]*TfuV.value + Egg[4]*EggV.value + Apl[4]*AplV.value + Crt[4]*CrtV.value + Ptc[4]*PtcV.value + Grp[4]*GrpV.value
 	+ Lfy[4]*LfyV.value + Pnt[4]*PntV.value + Ach[4]*AchV.value +Tcc[4]*TccV.value + Hcc[4]*HccV.value + Wwb[4]*WwbV.value + Whr[4]*WhrV.value + Whr[4]*WhrV.value + Brr[4]*BrrV.value
 	+ Oin[4]*OinV.value + Rpt[4]*RptV.value + Whm[4]*WhmV.value + Ces[4]*CesV.value + Bcn[4]*BcnV.value + Ban[4]*BanV.value + Let[4]*LetV.value + Brc[4]*BrcV.value + Btr[4]*BtrV.value,2)))
