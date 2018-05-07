@@ -79,8 +79,7 @@ CesV = Variable()
 BcnV = Variable()
 BanV = Variable()
 LetV = Variable()
-BrcV = Variable()
-BtrV = Variable()
+BrcV, BtrV = Variable()
 
 default = [0 <= ScbV, ScbV <= 453,
 0 <= GrbV,
