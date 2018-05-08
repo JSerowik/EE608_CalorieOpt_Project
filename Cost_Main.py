@@ -3,11 +3,12 @@ import numpy
 
 std = input('Do you use the Metric system or Imperial? (M or I) ')
 if(std == 'M'):
-	weight = float(input('What is you weight in kilograms? '))
+	wkg = float(input('What is you weight in kilograms? '))
+	wlb = wkg*2.2046226218
 	height = float(input('What is you height in meters? '))
 elif(std == 'I'):
 	wlb = float(input('What is you weight in pounds? '))
-	weight = wlb/2.2046226218
+	wkg = wlb/2.2046226218
 	print('Input your height: ')
 	h_ft = int(input('Feet: '))
 	h_inch = int(input('Inches: '))
@@ -16,10 +17,10 @@ elif(std == 'I'):
 age = float(input('How old are you? '))
 sex = input('What is your sex? (M or F) ')
 if(sex == "M"):
-	DCI = 864 - 9.72 * age + (14.2 * weight + 503 * height)
+	DCI = 864 - 9.72 * age + (14.2 * wkg + 503 * height)
 elif(sex == "F"):
-	DCI = 387 - 7.31 * age + (10.9 * weight + 660.7 * height)
-print('Metric weight is: ' +str(round(weight,2)) + ' kg')
+	DCI = 387 - 7.31 * age + (10.9 * wkg + 660.7 * height)
+print('Metric weight is: ' +str(round(wkg,2)) + ' kg')
 print('Metric height is: ' +str(round(height,2)) + ' m')
 print('Daily Caloric intake: '+str(round(DCI,2))+' calories')
 
@@ -109,10 +110,10 @@ diet = input("Please select your diet (Paleo = P, Atkins = A, Keto = K, Zone = Z
 
 if(diet == "P"):
 	if(sex == "M"):
-		constraints = [0.7*(155-20) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
+		constraints = [0.7*(wlb-20) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
-		155 >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
+		wlb >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
 		50 <= Scb[2]*ScbV + Grb[2]*GrbV + Rfb[2]*RfbV + Tfu[2]*TfuV + Egg[2]*EggV + Apl[2]*AplV + Crt[2]*CrtV + Ptc[2]*PtcV + Grp[2]*GrpV
@@ -128,10 +129,10 @@ if(diet == "P"):
 		+ Lfy[3]*LfyV + Pnt[3]*PntV + Ach[3]*AchV +Tcc[3]*TccV + Hcc[3]*HccV + Wwb[3]*WwbV + Whr[3]*WhrV + Whr[3]*WhrV + Brr[3]*BrrV + Oin[3]*OinV + Rpt[3]*RptV 
 		+ Whm[3]*WhmV + Ces[3]*CesV + Bcn[3]*BcnV + Ban[3]*BanV + Let[3]*LetV + Brc[3]*BrcV + Btr[3]*BtrV] + default
 	elif(sex =="F"):
-		constraints = [0.7*(155-25) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
+		constraints = [0.7*(wlb-25) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
-		155 >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
+		wlb >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
 		50 <= Scb[2]*ScbV + Grb[2]*GrbV + Rfb[2]*RfbV + Tfu[2]*TfuV + Egg[2]*EggV + Apl[2]*AplV + Crt[2]*CrtV + Ptc[2]*PtcV + Grp[2]*GrpV
@@ -167,10 +168,10 @@ elif(diet == "A"):
 	+ Whm[3]*WhmV + Ces[3]*CesV + Bcn[3]*BcnV + Ban[3]*BanV + Let[3]*LetV + Brc[3]*BrcV + Btr[3]*BtrV] + default
 elif(diet == "K"):
 	if(sex == "M"):
-		constraints = [0.8*(155-20) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
+		constraints = [0.8*(wlb-20) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
-		(155-20) >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
+		(wlb-20) >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
 		30 <= Scb[2]*ScbV + Grb[2]*GrbV + Rfb[2]*RfbV + Tfu[2]*TfuV + Egg[2]*EggV + Apl[2]*AplV + Crt[2]*CrtV + Ptc[2]*PtcV + Grp[2]*GrpV
@@ -186,10 +187,10 @@ elif(diet == "K"):
 		+ Lfy[3]*LfyV + Pnt[3]*PntV + Ach[3]*AchV +Tcc[3]*TccV + Hcc[3]*HccV + Wwb[3]*WwbV + Whr[3]*WhrV + Whr[3]*WhrV + Brr[3]*BrrV + Oin[3]*OinV + Rpt[3]*RptV 
 		+ Whm[3]*WhmV + Ces[3]*CesV + Bcn[3]*BcnV + Ban[3]*BanV + Let[3]*LetV + Brc[3]*BrcV + Btr[3]*BtrV] + default
 	elif(sex == "F"):
-		constraints = [0.8*(155-25) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
+		constraints = [0.8*(wlb-25) <= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV 
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
-		(155-25) >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
+		(wlb-25) >= Scb[1]*ScbV + Grb[1]*GrbV + Rfb[1]*RfbV + Tfu[1]*TfuV + Egg[1]*EggV + Apl[1]*AplV + Crt[1]*CrtV + Ptc[1]*PtcV + Grp[1]*GrpV
 		+ Lfy[1]*LfyV + Pnt[1]*PntV + Ach[1]*AchV +Tcc[1]*TccV + Hcc[1]*HccV + Wwb[1]*WwbV + Whr[1]*WhrV + Whr[1]*WhrV + Brr[1]*BrrV + Oin[1]*OinV + Rpt[1]*RptV 
 		+ Whm[1]*WhmV + Ces[1]*CesV + Bcn[1]*BcnV + Ban[1]*BanV + Let[1]*LetV + Brc[1]*BrcV + Btr[1]*BtrV,
 		30 <= Scb[2]*ScbV + Grb[2]*GrbV + Rfb[2]*RfbV + Tfu[2]*TfuV + Egg[2]*EggV + Apl[2]*AplV + Crt[2]*CrtV + Ptc[2]*PtcV + Grp[2]*GrpV
